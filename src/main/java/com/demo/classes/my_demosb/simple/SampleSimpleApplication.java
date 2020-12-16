@@ -26,7 +26,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.demo.classes.my_demosb.simple.service.HelloWorldService;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
+@EnableSwagger2
 public class SampleSimpleApplication{
 
 	// Simple example shows how a command line spring application can execute an
