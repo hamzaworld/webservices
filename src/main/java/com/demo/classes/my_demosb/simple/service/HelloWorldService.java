@@ -16,20 +16,28 @@
 
 package com.demo.classes.my_demosb.simple.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.demo.classes.my_demosb.simple.model.Employee;
+import com.demo.classes.my_demosb.simple.repository.HomeRepository;
+
 @Service
 public class HelloWorldService {
 
+	@Autowired
+	HomeRepository repository;
+	
+	public Employee getEmployeeById(Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).get();	
+	}
 
-	public String getEmployeeByIdAndName(String id, String name) {
-		//repo layer will be used to get the desired data
-		
-		if(id.equalsIgnoreCase("123") && name.equalsIgnoreCase("hamza"))
-			return "recordFound";
-		else
-			return "recordNotFound";
+	public String saveEmployee(Employee emp) {
+		// TODO Auto-generated method stub
+		 repository.saveAndFlush(emp);
+		 return"Record saved";
 	}
 }
